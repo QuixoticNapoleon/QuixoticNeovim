@@ -17,8 +17,8 @@ require("config.lazy")
 
 
 -- Config Files
-require("config/theme")
-require("config/keybindings")
+-- require("config/theme")
+-- require("config/keybindings")
 -- require("config/tree")
 -- require('config/statusline')
 -- require("config/neovide")
@@ -28,6 +28,12 @@ require("config/keybindings")
 
 
 -- require('config/greeter')
+
+--------------------------------------------------------
+-- 🪶 Theme
+--------------------------------------------------------
+vim.cmd("colorscheme default")
+
 --------------------------------------------------------
 -- 🪶 Basic Settings
 --------------------------------------------------------
@@ -46,6 +52,31 @@ vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = '#74c4c4', bg = 'NONE' })
 vim.cmd("set tabstop=4")
 vim.cmd("set shiftwidth=4")
 vim.cmd("set expandtab")
+
+--------------------------------------------------------
+-- 🪶 Basic Keybindings
+--------------------------------------------------------
+
+-- Keybindings
+
+-- Swap Ctrl + C to Esc
+-- vim.api.nvim_set_keymap('i', '<C-c>', '<Esc>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('i', '<C-g>', '<Esc>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('i', '<Esc>', '<C-c>', { noremap = true, silent = true })
+
+
+-- Leader Key
+vim.g.mapleader = ' '
+
+-- Tree
+vim.api.nvim_set_keymap('n', '<leader>t', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+
+-- Telescope
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+
 
 
 --------------------------------------------------------
