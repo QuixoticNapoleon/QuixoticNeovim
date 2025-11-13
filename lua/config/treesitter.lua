@@ -1,33 +1,29 @@
 -- ~/.config/nvim/lua/config/treesitter.lua
 return function()
-  require'nvim-treesitter.configs'.setup {
-    -- A list of parser names, or "all"
-    ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "cpp", "rust", "haskell", "python"  },
-
-    -- Install parsers synchronously (only applied to `ensure_installed`)
+  require("nvim-treesitter.configs").setup {
+    ensure_installed = {
+      "c",
+      "lua",
+      "vim",
+      "vimdoc",
+      "query",
+      "markdown",
+      "markdown_inline",
+      "python",
+      "javascript",
+      "cpp",
+      "rust",
+      "haskell",
+    },
     sync_install = false,
-
-    -- Automatically install missing parsers when entering buffer
     auto_install = true,
-
-    -- List of parsers to ignore installing
-    -- ignore_install = { "javascript" },
-
     highlight = {
       enable = true,
-      -- disable = { "c", "rust" }, -- parsers to disable
-
-      -- Disable for large files
-      -- disable = function(lang, buf)
-      --     local max_filesize = 100 * 1024 -- 100 KB
-      --     local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-      --     if ok and stats and stats.size > max_filesize then
-      --         return true
-      --     end
-      -- end,
-
-      -- Run 'syntax' and tree-sitter at the same time
-      -- additional_vim_regex_highlighting = false,
+      disable = {},
+      additional_vim_regex_highlighting = false,
+    },
+    indent = {
+      enable = true,
     },
     -- incremental_selection = {
     --   enable = true,
@@ -39,12 +35,14 @@ return function()
     --   },
     -- },
     textobjects = {
-      enable = true,
-      keymaps = {
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
+      select = {
+        enable = true,
+        keymaps = {
+          ["af"] = "@function.outer",
+          ["if"] = "@function.inner",
+          ["ac"] = "@class.outer",
+          ["ic"] = "@class.inner",
+        },
       },
     },
     fold = {
@@ -52,5 +50,20 @@ return function()
     },
 
   }
-end
+  -- Add folding settings here
+  vim.opt.foldmethod = "expr"
+  vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+  vim.opt.foldlevelstart = 99
+  vim.api.nvim_create_autocmd("FileType", {
+  callback = function()
+    if require("nvim-treesitter.parsers").has_parser() then
+      vim.opt.foldmethod = "expr"
+      vim.opt.foldexpr   = "v:lua.vim.treesitter.foldexpr()"
+    else
+      vim.opt.foldmethod = "indent"  -- or whatever you prefer
+    end
+  end,
+})
 
+
+end
