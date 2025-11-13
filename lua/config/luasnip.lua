@@ -18,4 +18,3 @@ return function()
   -- Optionally, load snippets here if you have them
   -- require("luasnip.loaders.from_vscode").lazy_load()
 end
-

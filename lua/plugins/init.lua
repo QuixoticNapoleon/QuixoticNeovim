@@ -8,6 +8,49 @@ return {
       end,
     },
 
+    -- TreeSitter
+    {"nvim-treesitter/nvim-treesitter", branch = 'master', lazy = false, build = ":TSUpdate",
+    config = function()
+        require("config.treesitter")() 
+    end,},
+    {"nvim-treesitter/nvim-treesitter-textobjects", lazy = false, },
+
+    -- Autopairs
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        config = true
+        -- use opts = {} for passing setup options
+        -- this is equivalent to setup({}) function
+    },
+
+    {
+    "kylechui/nvim-surround",
+    version = "^3.0.0", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+        require("nvim-surround").setup({
+            -- Configuration here, or leave empty to use defaults
+        })
+    end
+    },
+
+
+    -- Autocompletion
+    { "hrsh7th/nvim-cmp" },
+    { "hrsh7th/cmp-nvim-lsp" },
+    
+    -- Snippets
+    {
+        "L3MON4D3/LuaSnip",
+        -- follow latest release.
+        version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+        -- install jsregexp (optional!).
+        build = "make install_jsregexp",
+        config = function()
+            require("config.luasnip")() 
+        end,
+    },
 
     -- File Explorer
     { "nvim-tree/nvim-tree.lua", config = require("config.tree") },
@@ -32,13 +75,6 @@ return {
 
     -- LaTeX
     { "lervag/vimtex", ft = "tex", config = require("config.vimtex") },
-    
-    -- Autocompletion
-    { "hrsh7th/nvim-cmp" },
-    { "hrsh7th/cmp-nvim-lsp" },
-    
-    -- Snippets
-    { "L3MON4D3/LuaSnip" },
     
     -- Grammar & Spell Checking
     { "rhysd/vim-grammarous", ft = "tex" },
