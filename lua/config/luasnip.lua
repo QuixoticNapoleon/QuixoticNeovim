@@ -1,20 +1,47 @@
 return function()
-  local ls = require("luasnip")
+    local ls = require("luasnip")
+    local s = ls.snippet
+    local t = ls.text_node
+    local i = ls.insert_node
 
-  -- Expand snippet
-  vim.keymap.set("i", "<C-K>", function() ls.expand() end, { silent = true })
+    -- Minimal test snippet
+    ls.snippets = {
+        all = {
+            s("hi", t("Hello, world!")),
+        },
+        lua = {
+            s("fn", {
+                t("function "), i(1, "name"), t("("), i(2), t({")", "\t"}),
+                i(0),
+                t({"", "end"})
+            }),
+        },
+    }
 
-  -- Jump forward/backward
-  vim.keymap.set({ "i", "s" }, "<C-L>", function() ls.jump(1) end, { silent = true })
-  vim.keymap.set({ "i", "s" }, "<C-J>", function() ls.jump(-1) end, { silent = true })
+    local opts = { silent = true, noremap = true }
 
-  -- Change choice in choice node
-  vim.keymap.set({ "i", "s" }, "<C-E>", function()
-    if ls.choice_active() then
-      ls.change_choice(1)
-    end
-  end, { silent = true })
+    -- Expand or jump forward
+    vim.keymap.set({ "i", "s" }, "<C-l>", function()
+        if ls.expand_or_jumpable() then
+            ls.expand_or_jump()
+        end
+    end, opts)
 
-  -- Optionally, load snippets here if you have them
-  -- require("luasnip.loaders.from_vscode").lazy_load()
+    -- Jump backward
+    vim.keymap.set({ "i", "s" }, "<C-h>", function()
+        if ls.jumpable(-1) then
+            ls.jump(-1)
+        end
+    end, opts)
+
+    -- Cycle choice nodes
+    vim.keymap.set({ "i", "s" }, "<C-k>", function()
+        if ls.choice_active() then
+            ls.change_choice(1)
+        end
+    end, opts)
+
+    -- Load snippets
+    require("luasnip.loaders.from_vscode").lazy_load()
 end
+
