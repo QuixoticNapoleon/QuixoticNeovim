@@ -67,11 +67,33 @@ return function()
     vim.lsp.enable(name)
 
     -- Diagnostic Icons
-    local signs = { Error = "✖", Warn = "", Hint = "", Info = "" }
-    for type, icon in pairs(signs) do
-      local hl = "DiagnosticSign" .. type
-      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-    end
+    vim.diagnostic.config({
+      signs = {
+        active = true,  -- enable signs
+        text = {
+          [vim.diagnostic.severity.ERROR] = "✖",
+          [vim.diagnostic.severity.WARN]  = "",
+          [vim.diagnostic.severity.INFO]  = "",
+          [vim.diagnostic.severity.HINT]  = "",  -- lightbulb for hint
+        },
+      },
+      -- virtual_text = {
+      --   prefix = "●GAY●",
+      -- },
+      underline = true,
+      severity_sort = true,
+      virtual_text = true,  -- inline messages
+      signs = true,         -- show signs in the gutter
+      underline = true,     -- underline errors/warnings
+      update_in_insert = false,
+      -- severity_sort = true,
+    })
+
+    -- local signs = { Error = "✖", Warn = "", Hint = "", Info = "" }
+    -- for type, icon in pairs(signs) do
+    --   local hl = "DiagnosticSign" .. type
+    --   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+    -- end
 
         -- Use Nerd Font symbols for diagnostics
     -- vim.fn.sign_define("DiagnosticSignError", {text = "✖", texthl = "DiagnosticError"}) -- x-mark
@@ -79,14 +101,6 @@ return function()
     -- vim.fn.sign_define("DiagnosticSignInfo",  {text = "", texthl = "DiagnosticInfo"})  -- info circle
     -- vim.fn.sign_define("DiagnosticSignHint",  {text = "", texthl = "DiagnosticHint"})  -- lightbulb
 
-
-    vim.diagnostic.config({
-      virtual_text = true,  -- inline messages
-      signs = true,         -- show signs in the gutter
-      underline = true,     -- underline errors/warnings
-      update_in_insert = false,
-      severity_sort = true,
-    })
 
     lualine_x = {
       {
@@ -96,8 +110,6 @@ return function()
         symbols = { error = " ", warn = " ", info = " ", hint = " " },
       }
     }
-
-
 
   end
 end
