@@ -74,10 +74,10 @@ return function()
     end
 
         -- Use Nerd Font symbols for diagnostics
-    vim.fn.sign_define("DiagnosticSignError", {text = "✖", texthl = "DiagnosticError"}) -- x-mark
-    vim.fn.sign_define("DiagnosticSignWarn",  {text = "", texthl = "DiagnosticWarn"})  -- warning triangle
-    vim.fn.sign_define("DiagnosticSignInfo",  {text = "", texthl = "DiagnosticInfo"})  -- info circle
-    vim.fn.sign_define("DiagnosticSignHint",  {text = "", texthl = "DiagnosticHint"})  -- lightbulb
+    -- vim.fn.sign_define("DiagnosticSignError", {text = "✖", texthl = "DiagnosticError"}) -- x-mark
+    -- vim.fn.sign_define("DiagnosticSignWarn",  {text = "", texthl = "DiagnosticWarn"})  -- warning triangle
+    -- vim.fn.sign_define("DiagnosticSignInfo",  {text = "", texthl = "DiagnosticInfo"})  -- info circle
+    -- vim.fn.sign_define("DiagnosticSignHint",  {text = "", texthl = "DiagnosticHint"})  -- lightbulb
 
 
     vim.diagnostic.config({
