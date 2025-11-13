@@ -71,11 +71,34 @@ vim.g.mapleader = ' '
 -- Tree
 vim.api.nvim_set_keymap('n', '<leader>t', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 
+-- vim.keymap.set('n', '<Space>;', function()
+--     -- Append a semicolon at the end of the line without moving the cursor
+--     local col = vim.fn.col('.') -- save current column
+--     vim.cmd('normal! A;')       -- go to end of line and append ;
+--     vim.fn.cursor(vim.fn.line('.'), col) -- restore cursor
+-- end, { noremap = true, silent = true })
+
+-- ~/.config/nvim/lua/keymaps.lua
+vim.keymap.set('n', '<Space>;', function()
+    local row, col = unpack(vim.api.nvim_win_get_cursor(0)) -- save cursor
+    local line = vim.api.nvim_get_current_line()
+
+    -- Only add semicolon if it doesn't exist
+    if not line:match(";$") then
+        vim.api.nvim_set_current_line(line .. ";")
+    end
+
+    -- Restore cursor
+    vim.api.nvim_win_set_cursor(0, {row, col})
+end, { noremap = true, silent = true })
+
+
 -- Telescope
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+
 
 
 
@@ -129,6 +152,9 @@ vim.cmd [[
   highlight BufferCurrentIcon  guifg=#8affff  guibg=#003636
 
   highlight BufferTabpageFill guibg=#003636
+
+  highlight Folded guifg=#74c4c4  guibg=#003636
+  highlight FoldColumn guifg=#74c4c4  guibg=#003636
 ]]
 
 -- desired icon background colour
