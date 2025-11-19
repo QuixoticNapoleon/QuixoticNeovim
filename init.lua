@@ -42,6 +42,19 @@ vim.cmd("colorscheme terafox")
 -- 🪶 Basic Settings
 --------------------------------------------------------
 
+-- List Chars
+vim.o.list = true
+vim.opt.listchars = {
+	tab = "»·",
+	space = "·",
+	trail = "·",
+	eol = "↲",
+	extends = "›",
+	precedes = "‹",
+	nbsp = "␣",
+}
+
+
 -- Line Numbers
 vim.wo.number = true
 vim.wo.relativenumber = true
@@ -55,7 +68,9 @@ vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = '#74c4c4', bg = 'NONE' })
 -- Tab Spaces
 vim.cmd("set tabstop=4")
 vim.cmd("set shiftwidth=4")
-vim.cmd("set expandtab")
+-- vim.cmd("set expandtab")
+vim.cmd("set noexpandtab")
+vim.cmd("set smarttab")
 
 --------------------------------------------------------
 -- 🪶 Basic Keybindings
@@ -128,59 +143,65 @@ vim.o.guifont = "Source Code Pro:h10.5"
 
 -- General Neovim GUI
 vim.cmd([[
-    highlight Normal guibg=NONE ctermbg=NONE
-    highlight NormalNC guibg=NONE ctermbg=NONE
-    highlight LineNr guibg=NONE
-    highlight SignColumn guibg=NONE
-    highlight WinSeparator guifg=#74c4c4 guibg=NONE
+	highlight Normal guibg=NONE ctermbg=NONE
+	highlight NormalNC guibg=NONE ctermbg=NONE
+	highlight LineNr guibg=NONE
+	highlight SignColumn guibg=NONE
+	highlight WinSeparator guifg=#74c4c4 guibg=NONE
+	
+	
+	highlight Pmenu guibg=NONE
+	highlight PmenuSel guifg=#FFFFFF guibg=#008282
+	highlight FloatBorder guifg=#74c4c4
+	
+	highlight NvimTreeNormal guibg=NONE
+	highlight NvimTreeNormalFloat guibg=NONE
+	highlight NvimTreeCursorLine guibg=#395e5e
+	
+	highlight Visual guibg=#395e5e
 
-
-    highlight Pmenu guibg=NONE
-    highlight PmenuSel guifg=#FFFFFF guibg=#008282
-    highlight FloatBorder guifg=#74c4c4
-
-    highlight NvimTreeNormal guibg=NONE
-    highlight NvimTreeNormalFloat guibg=NONE
-    highlight NvimTreeCursorLine guibg=#395e5e
-
-    highlight Visual guibg=#395e5e
+	highlight EndOfBuffer guifg=#016868
+	highlight SpecialKey guifg=#016868
+	highlight Trailing guifg=#016868
+	highlight Whitespace guifg=#016868
+	highlight NonText guifg=#016868
 ]])
 
 
 -- For Tabs and Folds
 vim.cmd [[
-  highlight BufferCurrent guifg=#FFFFFF guibg=#003636
-  highlight BufferVisible guifg=#CCCCCC guibg=#003636
-  highlight BufferInactive guifg=#888888 guibg=#003636
-
-  highlight BufferCurrentMod guifg=#fce094 guibg=#003636
-  highlight BufferVisibleMod guibg=#003636
-  highlight BufferInactiveMod guibg=#003636
-
-  highlight BufferDefaultCurrent guifg=#FFFFFF guibg=#003636
-  highlight BufferDefaultVisible guifg=#CCCCCC guibg=#003636
-  highlight BufferDefaultInactive guifg=#888888 guibg=#003636
-
-  highlight BufferInactiveSign guifg=#8affff  guibg=#003636
-  highlight BufferVisibleSign  guifg=#8affff  guibg=#003636
-  highlight BufferCurrentSign  guifg=#8affff  guibg=#003636
-
-  highlight BufferDefaultInactiveSign guifg=#8affff  guibg=#003636
-  highlight BufferDefaultVisibleSign  guifg=#8affff  guibg=#003636
-  highlight BufferDefaultCurrentSign  guifg=#8affff  guibg=#003636
-
-  highlight BufferDefaultInactiveIcon guifg=#8affff  guibg=#003636
-  highlight BufferDefaultVisibleIcon  guifg=#8affff  guibg=#003636
-  highlight BufferDefaultCurrentIcon  guifg=#8affff  guibg=#003636
-
-  highlight BufferInactiveIcon guifg=#8affff  guibg=#003636
-  highlight BufferVisibleIcon  guifg=#8affff  guibg=#003636
-  highlight BufferCurrentIcon  guifg=#8affff  guibg=#003636
-
-  highlight BufferTabpageFill guibg=#003636
-
-  highlight Folded guifg=#74c4c4  guibg=#003636
-  highlight FoldColumn guifg=#74c4c4  guibg=#003636
+	highlight BufferCurrent guifg=#FFFFFF guibg=#003636
+	highlight BufferVisible guifg=#CCCCCC guibg=#003636
+	highlight BufferInactive guifg=#888888 guibg=#003636
+	
+	highlight BufferCurrentMod guifg=#fce094 guibg=#003636
+	highlight BufferVisibleMod guibg=#003636
+	highlight BufferInactiveMod guibg=#003636
+	
+	highlight BufferDefaultCurrent guifg=#FFFFFF guibg=#003636
+	highlight BufferDefaultVisible guifg=#CCCCCC guibg=#003636
+	highlight BufferDefaultInactive guifg=#888888 guibg=#003636
+	
+	highlight BufferInactiveSign guifg=#8affff  guibg=#003636
+	highlight BufferVisibleSign  guifg=#8affff  guibg=#003636
+	highlight BufferCurrentSign  guifg=#8affff  guibg=#003636
+	
+	highlight BufferDefaultInactiveSign guifg=#8affff  guibg=#003636
+	highlight BufferDefaultVisibleSign  guifg=#8affff  guibg=#003636
+	highlight BufferDefaultCurrentSign  guifg=#8affff  guibg=#003636
+	
+	highlight BufferDefaultInactiveIcon guifg=#8affff  guibg=#003636
+	highlight BufferDefaultVisibleIcon  guifg=#8affff  guibg=#003636
+	highlight BufferDefaultCurrentIcon  guifg=#8affff  guibg=#003636
+	
+	highlight BufferInactiveIcon guifg=#8affff  guibg=#003636
+	highlight BufferVisibleIcon  guifg=#8affff  guibg=#003636
+	highlight BufferCurrentIcon  guifg=#8affff  guibg=#003636
+	
+	highlight BufferTabpageFill guibg=#003636
+	
+	highlight Folded guifg=#74c4c4  guibg=#003636
+	highlight FoldColumn guifg=#74c4c4  guibg=#003636
 ]]
 
 -- -- KEEP THIS AS BACKUP
