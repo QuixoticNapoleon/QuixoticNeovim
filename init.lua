@@ -28,10 +28,14 @@ require("config.lazy")
 
 
 -- require('config/greeter')
+-- require("luasnip.loaders.from_vscode").lazy_load()
+-- require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/config/snippets.lua" })
+
 
 --------------------------------------------------------
 -- 🪶 Theme
 --------------------------------------------------------
+local dark_teal = "#003636"
 vim.cmd("colorscheme default")
 
 --------------------------------------------------------
@@ -115,7 +119,8 @@ vim.api.nvim_set_hl(0, "Normal", { ctermbg = "none", bg = "none" })
 
 -- Colors (Foreground and Background)
 -- Neovide uses Neovim's colorscheme, so we’ll override via highlight groups
-vim.api.nvim_set_hl(0, "Normal", { fg = "#8affff", bg = "#003636" })
+-- vim.api.nvim_set_hl(0, "Normal", { fg = "#8affff", bg = "#003636" })
+vim.api.nvim_set_hl(0, "Normal", { fg = "#8affff", bg = "none", ctermbg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { fg = "#8affff", bg = "#003636" })
 
 -- Set font and size
