@@ -1,7 +1,7 @@
 -- ~/.config/nvim/lua/plugins/init.lua
 return {
     -- LSP
-    {
+	{
       "neovim/nvim-lspconfig",
       config = function()
         require("config.lsp")()  -- note the () if your lsp.lua returns a function
@@ -107,6 +107,15 @@ return {
       version = "^1.0.0",
       config = require("config.tabs"),
     },
+
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		---@module "ibl"
+		---@type ibl.config
+		opts = {},
+		config = require("config.indent"),
+	},
 
     -- Dashboard
     { "nvimdev/dashboard-nvim", event = "VimEnter", dependencies = { "nvim-tree/nvim-web-devicons" }, config = require("config.dashboard") },
