@@ -54,6 +54,20 @@ vim.opt.listchars = {
 	nbsp = "␣",
 }
 
+-- Enable wrapping
+vim.opt.wrap = true
+
+-- Break lines at word boundaries
+vim.opt.linebreak = true
+
+-- Prefix shown on wrapped lines
+vim.opt.showbreak = "↳ "
+
+-- Indent wrapped lines to match indentation
+vim.opt.breakindent = true
+
+-- (Optional) fine-tune breakindent behavior
+-- vim.opt.breakindentopt = "shift:2"
 
 -- Line Numbers
 vim.wo.number = true
