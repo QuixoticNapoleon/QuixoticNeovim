@@ -35,39 +35,40 @@ return {
     end
     },
 
-      {
-        "hrsh7th/nvim-cmp",
-        event = "InsertEnter",  -- lazy load when entering insert mode
-        dependencies = {
-          "hrsh7th/cmp-nvim-lsp",
-          "hrsh7th/cmp-buffer",
-          "hrsh7th/cmp-path",
-          "saadparwaiz1/cmp_luasnip",
-          "L3MON4D3/LuaSnip",
-          "rafamadriz/friendly-snippets",
-          "onsails/lspkind.nvim",
-        },
-        config = function()
-          require("config.completion")()  -- load the separate config file
-        end,
+    -- Auto Completion
+    {
+      "hrsh7th/nvim-cmp",
+      event = "InsertEnter",  -- lazy load when entering insert mode
+      dependencies = {
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+        "saadparwaiz1/cmp_luasnip",
+        "L3MON4D3/LuaSnip",
+        "rafamadriz/friendly-snippets",
+        "onsails/lspkind.nvim",
       },
+      config = function()
+        require("config.completion")()  -- load the separate config file
+      end,
+    },
 
 
     -- Autocompletion
-    { "hrsh7th/nvim-cmp" },
-    { "hrsh7th/cmp-nvim-lsp" },
+    -- { "hrsh7th/nvim-cmp" },
+    -- { "hrsh7th/cmp-nvim-lsp" },
     
     -- Snippets
-  {
-    "L3MON4D3/LuaSnip",
-    version = "v2.*",
-    dependencies = { "rafamadriz/friendly-snippets" },
-    build = "make install_jsregexp",
-    config = function()
-      -- Call the returned function from your module
-      require("config.luasnip")()
-    end,
-  },
+    {
+      "L3MON4D3/LuaSnip",
+      version = "v2.*",
+      dependencies = { "rafamadriz/friendly-snippets" },
+      build = "make install_jsregexp",
+      config = function()
+        -- Call the returned function from your module
+        require("config.luasnip")()
+      end,
+    },
 
     -- File Explorer
     { "nvim-tree/nvim-tree.lua", config = require("config.tree") },
@@ -113,6 +114,7 @@ return {
     -- Themes
     "martinsione/darkplus.nvim",
     "folke/tokyonight.nvim",
-    "navarasu/onedark.nvim"
+    "navarasu/onedark.nvim",
+    "EdenEast/nightfox.nvim"
 }
 
