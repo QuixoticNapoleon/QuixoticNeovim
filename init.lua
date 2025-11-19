@@ -138,6 +138,12 @@ vim.cmd([[
     highlight Pmenu guibg=NONE
     highlight PmenuSel guifg=#FFFFFF guibg=#008282
     highlight FloatBorder guifg=#74c4c4
+
+    highlight NvimTreeNormal guibg=NONE
+    highlight NvimTreeNormalFloat guibg=NONE
+    highlight NvimTreeCursorLine guibg=#395e5e
+
+    highlight Visual guibg=#395e5e
 ]])
 
 
@@ -177,34 +183,35 @@ vim.cmd [[
   highlight FoldColumn guifg=#74c4c4  guibg=#003636
 ]]
 
--- desired icon background colour
-local ICON_BG = "#003636"
-
-local function fix_devicon_bg()
-  for _, name in ipairs(vim.fn.getcompletion('DevIcon', 'highlight')) do
-    local hl = vim.api.nvim_get_hl(0, { name = name })
-    -- Only change background (keep fg)
-    vim.api.nvim_set_hl(0, name, { fg = hl.fg, bg = ICON_BG })
-  end
-end
-
--- Hook on colorscheme change / startup
-vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
-  callback = function() vim.schedule(fix_devicon_bg) end,
-})
-
--- Hook when buffers enter (so new filetypes show up)
-vim.api.nvim_create_autocmd("BufEnter", {
-  callback = function() vim.schedule(fix_devicon_bg) end,
-})
-
--- Wrap devicons.refresh
-local ok, devicons = pcall(require, "nvim-web-devicons")
-if ok then
-  local orig_refresh = devicons.refresh
-  devicons.refresh = function(...)
-    local result = orig_refresh(...)
-    vim.schedule(fix_devicon_bg)
-    return result
-  end
-end
+-- -- KEEP THIS AS BACKUP
+-- -- desired icon background colour
+-- local ICON_BG = "#003636"
+-- 
+-- local function fix_devicon_bg()
+--   for _, name in ipairs(vim.fn.getcompletion('DevIcon', 'highlight')) do
+--     local hl = vim.api.nvim_get_hl(0, { name = name })
+--     -- Only change background (keep fg)
+--     vim.api.nvim_set_hl(0, name, { fg = hl.fg, bg = ICON_BG })
+--   end
+-- end
+-- 
+-- -- Hook on colorscheme change / startup
+-- vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
+--   callback = function() vim.schedule(fix_devicon_bg) end,
+-- })
+-- 
+-- -- Hook when buffers enter (so new filetypes show up)
+-- vim.api.nvim_create_autocmd("BufEnter", {
+--   callback = function() vim.schedule(fix_devicon_bg) end,
+-- })
+-- 
+-- -- Wrap devicons.refresh
+-- local ok, devicons = pcall(require, "nvim-web-devicons")
+-- if ok then
+--   local orig_refresh = devicons.refresh
+--   devicons.refresh = function(...)
+--     local result = orig_refresh(...)
+--     vim.schedule(fix_devicon_bg)
+--     return result
+--   end
+-- end
