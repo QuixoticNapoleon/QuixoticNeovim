@@ -1,47 +1,36 @@
+-- Return a function so we can call it from Lazy.nvim
 return function()
-    local ls = require("luasnip")
-    local s = ls.snippet
-    local t = ls.text_node
-    local i = ls.insert_node
+  local ls = require("luasnip")
 
-    -- Minimal test snippet
-    ls.snippets = {
-        all = {
-            s("hi", t("Hello, world!")),
-        },
-        lua = {
-            s("fn", {
-                t("function "), i(1, "name"), t("("), i(2), t({")", "\t"}),
-                i(0),
-                t({"", "end"})
-            }),
-        },
-    }
+  -- Load snippets from friendly-snippets
+  require("luasnip.loaders.from_vscode").lazy_load()
 
-    local opts = { silent = true, noremap = true }
+  -- Example Lua snippets
+  ls.add_snippets("lua", {
+    ls.parser.parse_snippet("hi", "print('Hello, world!')"),
+    ls.parser.parse_snippet("fn", "function ${1:name}(${2:args})\n\t$0\nend"),
+  })
 
-    -- Expand or jump forward
-    vim.keymap.set({ "i", "s" }, "<C-l>", function()
-        if ls.expand_or_jumpable() then
-            ls.expand_or_jump()
-        end
-    end, opts)
+  local opts = { silent = true, noremap = true }
 
-    -- Jump backward
-    vim.keymap.set({ "i", "s" }, "<C-h>", function()
-        if ls.jumpable(-1) then
-            ls.jump(-1)
-        end
-    end, opts)
+  -- Expand snippet or jump forward
+  vim.keymap.set({ "i", "s" }, "<C-k>", function()
+    if ls.expand_or_jumpable() then
+      ls.expand_or_jump()
+    end
+  end, opts)
 
-    -- Cycle choice nodes
-    vim.keymap.set({ "i", "s" }, "<C-k>", function()
-        if ls.choice_active() then
-            ls.change_choice(1)
-        end
-    end, opts)
+  -- Jump backward
+  vim.keymap.set({ "i", "s" }, "<C-j>", function()
+    if ls.jumpable(-1) then
+      ls.jump(-1)
+    end
+  end, opts)
 
-    -- Load snippets
-    require("luasnip.loaders.from_vscode").lazy_load()
+  -- Change choice in choice node
+  vim.keymap.set({ "i", "s" }, "<C-l>", function()
+    if ls.choice_active() then
+      ls.change_choice(1)
+    end
+  end, opts)
 end
-
