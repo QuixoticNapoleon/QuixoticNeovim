@@ -36,7 +36,7 @@ require("config.lazy")
 -- 🪶 Theme
 --------------------------------------------------------
 local dark_teal = "#003636"
-vim.cmd("colorscheme default")
+vim.cmd("colorscheme terafox")
 
 --------------------------------------------------------
 -- 🪶 Basic Settings
@@ -103,9 +103,6 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 
-
-
-
 --------------------------------------------------------
 -- 🪶 GUI and Colour Configuration
 --------------------------------------------------------
@@ -123,10 +120,28 @@ vim.api.nvim_set_hl(0, "Normal", { ctermbg = "none", bg = "none" })
 vim.api.nvim_set_hl(0, "Normal", { fg = "#8affff", bg = "none", ctermbg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { fg = "#8affff", bg = "#003636" })
 
+
 -- Set font and size
 -- vim.o.guifont = "JetBrainsMono Nerd Font:h14"
 vim.o.guifont = "Source Code Pro:h10.5"
 
+
+-- General Neovim GUI
+vim.cmd([[
+    highlight Normal guibg=NONE ctermbg=NONE
+    highlight NormalNC guibg=NONE ctermbg=NONE
+    highlight LineNr guibg=NONE
+    highlight SignColumn guibg=NONE
+    highlight WinSeparator guifg=#74c4c4 guibg=NONE
+
+
+    highlight Pmenu guibg=NONE
+    highlight PmenuSel guifg=#FFFFFF guibg=#008282
+    highlight FloatBorder guifg=#74c4c4
+]])
+
+
+-- For Tabs and Folds
 vim.cmd [[
   highlight BufferCurrent guifg=#FFFFFF guibg=#003636
   highlight BufferVisible guifg=#CCCCCC guibg=#003636
