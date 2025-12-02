@@ -45,7 +45,8 @@ vim.cmd("colorscheme terafox")
 -- List Chars
 vim.o.list = true
 vim.opt.listchars = {
-	tab = "»·",
+	-- tab = "»·",
+	tab = "│»",
 	space = "·",
 	trail = "·",
 	eol = "↲",
