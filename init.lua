@@ -79,26 +79,11 @@ vim.opt.smartindent = true
 -- 🪶 Basic Keybindings
 --------------------------------------------------------
 
--- Keybindings
-
--- Swap Ctrl + C to Esc
--- vim.api.nvim_set_keymap('i', '<C-c>', '<Esc>', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('i', '<C-g>', '<Esc>', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('i', '<Esc>', '<C-c>', { noremap = true, silent = true })
-
-
 -- Leader Key
 vim.g.mapleader = ' '
 
 -- Tree
 vim.api.nvim_set_keymap('n', '<leader>t', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
-
--- vim.keymap.set('n', '<Space>;', function()
---     -- Append a semicolon at the end of the line without moving the cursor
---     local col = vim.fn.col('.') -- save current column
---     vim.cmd('normal! A;')       -- go to end of line and append ;
---     vim.fn.cursor(vim.fn.line('.'), col) -- restore cursor
--- end, { noremap = true, silent = true })
 
 -- ~/.config/nvim/lua/keymaps.lua
 vim.keymap.set('n', '<Space>;', function()
@@ -206,36 +191,3 @@ vim.cmd [[
 	highlight Folded guifg=#74c4c4  guibg=#003636
 	highlight FoldColumn guifg=#74c4c4  guibg=#003636
 ]]
-
--- -- KEEP THIS AS BACKUP
--- -- desired icon background colour
--- local ICON_BG = "#003636"
--- 
--- local function fix_devicon_bg()
---   for _, name in ipairs(vim.fn.getcompletion('DevIcon', 'highlight')) do
---     local hl = vim.api.nvim_get_hl(0, { name = name })
---     -- Only change background (keep fg)
---     vim.api.nvim_set_hl(0, name, { fg = hl.fg, bg = ICON_BG })
---   end
--- end
--- 
--- -- Hook on colorscheme change / startup
--- vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
---   callback = function() vim.schedule(fix_devicon_bg) end,
--- })
--- 
--- -- Hook when buffers enter (so new filetypes show up)
--- vim.api.nvim_create_autocmd("BufEnter", {
---   callback = function() vim.schedule(fix_devicon_bg) end,
--- })
--- 
--- -- Wrap devicons.refresh
--- local ok, devicons = pcall(require, "nvim-web-devicons")
--- if ok then
---   local orig_refresh = devicons.refresh
---   devicons.refresh = function(...)
---     local result = orig_refresh(...)
---     vim.schedule(fix_devicon_bg)
---     return result
---   end
--- end
