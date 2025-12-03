@@ -11,30 +11,12 @@
 -- 🪶 Plugins
 --------------------------------------------------------
 
--- Plugins
 require("config.lazy")
--- require("lazy").setup("plugins")
-
-
--- Config Files
--- require("config/theme")
--- require("config/keybindings")
--- require("config/tree")
--- require('config/statusline')
--- require("config/neovide")
--- require("config/ccc")
--- require("config/dashboard")
--- require("config/tabs")
-
-
--- require('config/greeter')
--- require("luasnip.loaders.from_vscode").lazy_load()
--- require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/config/snippets.lua" })
-
 
 --------------------------------------------------------
 -- 🪶 Theme
 --------------------------------------------------------
+
 local dark_teal = "#003636"
 vim.cmd("colorscheme terafox")
 
