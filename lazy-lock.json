@@ -1,4 +1,5 @@
 {
+  "HexEditor.nvim": { "branch": "master", "commit": "40708985ea840207c3c8a9acd6043871c2ed8862" },
   "LuaSnip": { "branch": "master", "commit": "5a1e39223db9a0498024a77b8441169d260c8c25" },
   "barbar.nvim": { "branch": "master", "commit": "53b5a2f34b68875898f0531032fbf090e3952ad7" },
   "ccc.nvim": { "branch": "main", "commit": "9d1a256e006decc574789dfc7d628ca11644d4c2" },

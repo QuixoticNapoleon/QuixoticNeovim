@@ -116,11 +116,19 @@ return {
     -- Dashboard
     { "nvimdev/dashboard-nvim", event = "VimEnter", dependencies = { "nvim-tree/nvim-web-devicons" }, config = require("config.dashboard") },
 
+	-- Hex Editing
+	{ 'ArcaneSpecs/HexEditor.nvim', 
+      config = function()
+        require("config.hex")()  -- note the () if your lsp.lua returns a function
+      end,
+	},
+
     
     -- Themes
     "martinsione/darkplus.nvim",
     "folke/tokyonight.nvim",
     "navarasu/onedark.nvim",
     "EdenEast/nightfox.nvim"
+
 }
 

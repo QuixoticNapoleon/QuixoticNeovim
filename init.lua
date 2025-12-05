@@ -126,7 +126,8 @@ vim.api.nvim_set_hl(0, "NormalFloat", { fg = "#8affff", bg = "#003636" })
 
 -- Set font and size
 -- vim.o.guifont = "JetBrainsMono Nerd Font:h14"
-vim.o.guifont = "Source Code Pro:h10.5"
+-- vim.o.guifont = "Source Code Pro:h10.5"
+vim.o.guifont = "JetBrainsMono Nerd Font:h10.5"
 
 
 -- General Neovim GUI
