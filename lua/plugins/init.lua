@@ -117,11 +117,18 @@ return {
     { "nvimdev/dashboard-nvim", event = "VimEnter", dependencies = { "nvim-tree/nvim-web-devicons" }, config = require("config.dashboard") },
 
 	-- Hex Editing
-	{ 'ArcaneSpecs/HexEditor.nvim', 
-      config = function()
-        require("config.hex")()  -- note the () if your lsp.lua returns a function
-      end,
-	},
+	-- { 'ArcaneSpecs/HexEditor.nvim', 
+    --   config = function()
+    --     require("config.hex")()  -- note the () if your lsp.lua returns a function
+    --   end,
+	-- },
+	'RaafatTurki/hex.nvim',
+
+	-- Debugging
+	'mfussenegger/nvim-dap', 
+
+	-- UndoTree
+	'mbbill/undotree',
 
     
     -- Themes

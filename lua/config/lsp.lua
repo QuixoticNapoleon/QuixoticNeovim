@@ -54,6 +54,8 @@ return function()
     hls            = {},  -- Haskell
     jdtls          = {},  -- Java
     asm_lsp        = {},  -- Assembly (if you install it)
+    clojure_lsp    = {},  -- Clojure
+    racket_langserver = {},  -- Racket (Scheme dialect)
   }
 
   for name, cfg in pairs(servers) do
