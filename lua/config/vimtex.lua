@@ -16,6 +16,15 @@ return function()
     },
   }
 
+  -- Auto hard-wrap at 80 columns for .tex files
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = "tex",
+    callback = function()
+      vim.opt_local.textwidth = 80
+      vim.opt_local.formatoptions:append("t")
+    end,
+  })
+
   -- Optional: disable conceal for clearer LaTeX text
   vim.g.vimtex_syntax_conceal = {
     accents = 0,

@@ -88,7 +88,7 @@ return {
     { "nvim-lua/plenary.nvim" },
 
     -- LaTeX
-    { "lervag/vimtex", ft = "tex", config = require("config.vimtex") },
+    { "lervag/vimtex", ft = "tex", init = require("config.vimtex") },
     
     -- Grammar & Spell Checking
     { "rhysd/vim-grammarous", ft = "tex" },
