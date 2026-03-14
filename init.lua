@@ -27,8 +27,8 @@ vim.cmd("colorscheme terafox")
 -- List Chars
 vim.o.list = true
 vim.opt.listchars = {
-	-- tab = "»·",
-	tab = "│»",
+	tab = "»»",
+	-- tab = "│»",
 	space = "·",
 	trail = "·",
 	eol = "↲",
@@ -87,16 +87,16 @@ vim.api.nvim_set_keymap('n', '<leader>t', ':NvimTreeToggle<CR>', { noremap = tru
 
 -- ~/.config/nvim/lua/keymaps.lua
 vim.keymap.set('n', '<Space>;', function()
-    local row, col = unpack(vim.api.nvim_win_get_cursor(0)) -- save cursor
-    local line = vim.api.nvim_get_current_line()
+	local row, col = unpack(vim.api.nvim_win_get_cursor(0)) -- save cursor
+	local line = vim.api.nvim_get_current_line()
 
-    -- Only add semicolon if it doesn't exist
-    if not line:match(";$") then
-        vim.api.nvim_set_current_line(line .. ";")
-    end
+	-- Only add semicolon if it doesn't exist
+	if not line:match(";$") then
+		vim.api.nvim_set_current_line(line .. ";")
+	end
 
-    -- Restore cursor
-    vim.api.nvim_win_set_cursor(0, {row, col})
+	-- Restore cursor
+	vim.api.nvim_win_set_cursor(0, {row, col})
 end, { noremap = true, silent = true })
 
 

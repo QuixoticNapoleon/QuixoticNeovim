@@ -29,6 +29,8 @@ return function()
     ibl.setup {
         indent = {
             highlight = highlight,
+            char = "│",
+            tab_char = "│",
         },
 	    exclude = {
 	      filetypes = { "dashboard", "alpha", "help", "neo-tree", "NvimTree", "lazy" },
