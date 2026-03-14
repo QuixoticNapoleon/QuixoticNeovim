@@ -130,6 +130,16 @@ return {
 	-- UndoTree
 	'mbbill/undotree',
 
+	-- Copilot
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
+		config = function()
+			require("config.copilot")()
+		end,
+	},
+
     
     -- Themes
     "martinsione/darkplus.nvim",
