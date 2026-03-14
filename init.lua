@@ -109,6 +109,15 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 -- UndoTree
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle, {})
 
+-- 'a' on empty line: enter insert mode with correct indentation
+vim.keymap.set('n', 'a', function()
+	local line = vim.api.nvim_get_current_line()
+	if line:match("^%s*$") then
+		return '"_cc'
+	end
+	return 'a'
+end, { noremap = true, expr = true })
+
 --------------------------------------------------------
 -- 🪶 GUI and Colour Configuration
 --------------------------------------------------------
