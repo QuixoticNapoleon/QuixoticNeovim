@@ -136,6 +136,13 @@ return {
 	-- Commenting
 	'tpope/vim-commentary',
 
+	-- Marks
+	{
+		'chentoast/marks.nvim',
+		event = 'VeryLazy',
+		opts = {},
+	},
+
 	-- Flash (quick navigation)
 	{
 		'folke/flash.nvim',
