@@ -16,6 +16,7 @@ return function()
     mapping = cmp.mapping.preset.insert({
       ["<C-b>"] = cmp.mapping.scroll_docs(-4),
       ["<C-f>"] = cmp.mapping.scroll_docs(4),
+      ["<C-Space>"] = cmp.mapping.complete(),  -- manual trigger
       ["<CR>"] = cmp.mapping.confirm({ select = true }),
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
@@ -23,7 +24,7 @@ return function()
         elseif luasnip.expand_or_jumpable() then
           luasnip.expand_or_jump()
         else
-          cmp.complete()
+          fallback()
         end
       end, { "i", "s" }),
       ["<S-Tab>"] = cmp.mapping(function(fallback)
@@ -51,7 +52,7 @@ return function()
       documentation = cmp.config.window.bordered(),
     },
     completion = {
-      autocomplete = false,  -- only trigger with <Tab>
+      autocomplete = false,  -- only trigger with <C-Space>
     },
   })
 end
