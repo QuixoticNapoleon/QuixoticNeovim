@@ -133,12 +133,26 @@ return {
 	-- Git
 	'tpope/vim-fugitive',
 
+	-- Commenting
+	'tpope/vim-commentary',
+
+	-- Flash (quick navigation)
+	{
+		'folke/flash.nvim',
+		event = 'VeryLazy',
+		config = function()
+			require('config.flash')()
+		end,
+	},
+
 	-- Markdown Rendering
 	{
 		'MeanderingProgrammer/render-markdown.nvim',
 		dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
 		ft = { 'markdown' },
-		opts = {},
+		opts = {
+			enabled = false,
+		},
 	},
 
 	-- Copilot
