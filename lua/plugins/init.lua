@@ -130,6 +130,17 @@ return {
 	-- UndoTree
 	'mbbill/undotree',
 
+	-- Git
+	'tpope/vim-fugitive',
+
+	-- Markdown Rendering
+	{
+		'MeanderingProgrammer/render-markdown.nvim',
+		dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+		ft = { 'markdown' },
+		opts = {},
+	},
+
 	-- Copilot
 	{
 		"zbirenbaum/copilot.lua",
