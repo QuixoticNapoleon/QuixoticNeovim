@@ -48,8 +48,14 @@ return function()
       format = lspkind.cmp_format({ with_text = true, maxwidth = 50 }),
     },
     window = {
-      completion = cmp.config.window.bordered(),
-      documentation = cmp.config.window.bordered(),
+      completion = cmp.config.window.bordered({
+        border = "rounded",
+        winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
+      }),
+      documentation = cmp.config.window.bordered({
+        border = "rounded",
+        winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
+      }),
     },
     completion = {
       autocomplete = false,  -- only trigger with <C-Space>
