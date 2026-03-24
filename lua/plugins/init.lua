@@ -152,6 +152,16 @@ return {
 		end,
 	},
 
+	-- Multiple Cursors
+	{
+		'jake-stewart/multicursor.nvim',
+		branch = '1.0',
+		event = 'VeryLazy',
+		config = function()
+			require('config.multicursor')()
+		end,
+	},
+
 	-- Markdown Rendering
 	{
 		'MeanderingProgrammer/render-markdown.nvim',
@@ -180,4 +190,3 @@ return {
     "EdenEast/nightfox.nvim"
 
 }
-
