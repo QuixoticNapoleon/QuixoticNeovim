@@ -119,6 +119,9 @@ vim.keymap.set('n', 'a', function()
 	return 'a'
 end, { noremap = true, expr = true })
 
+-- Clipboard
+vim.opt.clipboard = "unnamedplus"
+
 --------------------------------------------------------
 -- 🪶 GUI and Colour Configuration
 --------------------------------------------------------
