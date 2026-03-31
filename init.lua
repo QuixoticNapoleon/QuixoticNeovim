@@ -210,6 +210,6 @@ vim.cmd [[
 -- Syntax Highlighting
 vim.cmd([[
 	highlight Comment guifg=#00B4B4
-	highlight Operator guifg=#8affff
+	highlight Operator guifg=#5cb5b5
 ]])
-vim.api.nvim_set_hl(0, "@variable", { fg = "#8affff" })
+vim.api.nvim_set_hl(0, "@variable", { fg = "#5cb5b5" })
