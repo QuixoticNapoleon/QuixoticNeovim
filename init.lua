@@ -206,3 +206,10 @@ vim.cmd [[
 	highlight Folded guifg=#74c4c4  guibg=#003636
 	highlight FoldColumn guifg=#74c4c4  guibg=#003636
 ]]
+
+-- Syntax Highlighting
+vim.cmd([[
+	highlight Comment guifg=#00B4B4
+	highlight Operator guifg=#8affff
+]])
+vim.api.nvim_set_hl(0, "@variable", { fg = "#8affff" })
