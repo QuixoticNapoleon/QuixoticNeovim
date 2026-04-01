@@ -154,7 +154,6 @@ vim.cmd([[
 	highlight SignColumn guibg=NONE
 	highlight WinSeparator guifg=#74c4c4 guibg=NONE
 	
-	
 	highlight Pmenu guibg=NONE
 	highlight PmenuSel guifg=#FFFFFF guibg=#008282
 	highlight Substitute guifg=#FFFFFF guibg=#008282
@@ -171,6 +170,8 @@ vim.cmd([[
 	highlight Trailing guifg=#016868
 	highlight Whitespace guifg=#016868
 	highlight NonText guifg=#016868
+	
+	highlight TelescopeBorder guifg=#74c4c4 guibg=NONE
 ]])
 
 
