@@ -169,14 +169,14 @@ return {
 	},
 
 	-- Copilot
-	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
-		config = function()
-			require("config.copilot")()
-		end,
-	},
+	-- {
+	-- 	"zbirenbaum/copilot.lua",
+	-- 	cmd = "Copilot",
+	-- 	event = "InsertEnter",
+	-- 	config = function()
+	-- 		require("config.copilot")()
+	-- 	end,
+	-- },
 
 	-- Themes
 	"martinsione/darkplus.nvim",
