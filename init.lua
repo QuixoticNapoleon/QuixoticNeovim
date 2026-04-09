@@ -108,7 +108,11 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 
 -- UndoTree
-vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle, {})
+vim.cmd.packadd("nvim.undotree")
+vim.keymap.set("n", "<leader>u", function()
+	require("undotree").open()
+end, { desc = "Open undotree" })
+
 
 -- 'a' on empty line: enter insert mode with correct indentation
 vim.keymap.set('n', 'a', function()

@@ -123,9 +123,6 @@ return {
 	-- Debugging
 	'mfussenegger/nvim-dap', 
 
-	-- UndoTree
-	'mbbill/undotree',
-
 	-- Git
 	'tpope/vim-fugitive',
 
