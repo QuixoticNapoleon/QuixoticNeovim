@@ -1,13 +1,17 @@
 return function()
 local db = require("dashboard")
 
--- Safe fortune function
+-- Fortune quote (supports multiline)
 local function quote()
-	local handle = io.popen([[while :; do f=$(fortune); [ $(printf '%s\n' "$f" | wc -l) -eq 1 ] && { printf '%s\n' "$f"; break; }; done]])
-	local result = handle:read('*a')
+	local handle = io.popen("fortune -s")
+	local result = handle:read("*a")
 	handle:close()
-	result = result:gsub('\r', ''):gsub('\n', ' ')
-	return result
+	local lines = { "" }
+	for line in result:gmatch("[^\r\n]+") do
+		table.insert(lines, line)
+	end
+	table.insert(lines, "")
+	return lines
 end
 
 db.setup {
@@ -78,7 +82,7 @@ db.setup {
 			label  = "Projects",
 			action = "Telescope find_files cwd="
 		},
-		footer = { "", quote() },
+		footer = quote(),
 	},
 }
 end
