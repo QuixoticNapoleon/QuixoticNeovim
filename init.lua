@@ -72,6 +72,7 @@ vim.cmd("set smarttab")
 
 -- Indentation Options
 vim.opt.indentkeys:remove(":")
+vim.opt.cinkeys:remove(":")
 vim.opt.smartindent = true
 
 
