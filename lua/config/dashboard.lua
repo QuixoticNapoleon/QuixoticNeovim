@@ -18,7 +18,7 @@ db.setup {
 	theme = "hyper",
 	config = {
 		week_header = {
-			enable = false  -- or true if you want date/time header
+			enable = false
 		},
 		header = {
 			"│  ╲   │ │",
@@ -28,7 +28,7 @@ db.setup {
 			"│ │  ╲   │",
 			"│ │   ╲  │",
 			"                                                  ",
-			"Neovim " .. vim.version().major .. '.' .. vim.version().minor .. '.' .. vim.version().patch,
+			"Neovim v" .. vim.version().major .. '.' .. vim.version().minor .. '.' .. vim.version().patch,
 			"   " .. os.date("%A, %B %d, %Y"),  -- your custom date/day line
 			"",
 			"[TIP: To exit Vim, use a Sledgehammer!]",
@@ -61,6 +61,7 @@ db.setup {
 			},
 			{
 				icon = "󰣪 ",
+				key  = "SMASH!",
 				desc = "SLEDGEHAMMER!",
 				action = "qa"
 			},
