@@ -163,7 +163,7 @@ vim.cmd([[
 	highlight PmenuSel guifg=#FFFFFF guibg=#008282
 	highlight Substitute guifg=#FFFFFF guibg=#008282
 	highlight FloatBorder guifg=#74c4c4
-	highlight StatusLine guibg=#004344
+	highlight StatusLine guibg=#003636
 	
 	highlight NvimTreeNormal guibg=NONE
 	highlight NvimTreeNormalFloat guibg=NONE
