@@ -150,6 +150,9 @@ vim.api.nvim_set_hl(0, "NormalFloat", { fg = "#8affff", bg = "#003636" })
 -- vim.o.guifont = "Source Code Pro:h10.5"
 vim.o.guifont = "JetBrainsMono Nerd Font:h10.5"
 
+-- Deleting keymaps
+vim.keymap.del('n', 'y<C-g>')
+
 
 -- General Neovim GUI
 vim.cmd([[

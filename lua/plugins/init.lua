@@ -23,12 +23,11 @@ return {
 	},
 
 	-- Surround
-	{
-	"kylechui/nvim-surround",
-	version = "^3.0.0", -- Use for stability; omit to use `main` branch for the latest features
-	event = "VeryLazy",
+	{ 
+	'nvim-mini/mini.surround', 
+	version = false,
 	config = function()
-		require("nvim-surround").setup({})
+		require("mini.surround").setup({})
 	end
 	},
 
@@ -133,7 +132,9 @@ return {
 	{
 		'chentoast/marks.nvim',
 		event = 'VeryLazy',
-		opts = {},
+		opts = {
+			default_mappings = false,
+		},
 	},
 
 	-- Flash (quick navigation)
