@@ -119,8 +119,17 @@ return {
 	-- },
 	'RaafatTurki/hex.nvim',
 
+	-- Java LSP
+	{
+		'mfussenegger/nvim-jdtls',
+		ft = 'java',
+		config = function()
+			require("config.jdtls")()
+		end,
+	},
+
 	-- Debugging
-	'mfussenegger/nvim-dap', 
+	'mfussenegger/nvim-dap',
 
 	-- Git
 	'tpope/vim-fugitive',
