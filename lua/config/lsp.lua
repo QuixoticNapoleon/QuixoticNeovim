@@ -52,7 +52,7 @@ return function()
 		rust_analyzer  = {},  -- Rust
 		zls            = {},  -- Zig
 		hls            = {},  -- Haskell
-		jdtls          = {},  -- Java
+		-- jdtls handled by nvim-jdtls plugin
 		asm_lsp        = {},  -- Assembly (if you install it)
 		clojure_lsp    = {},  -- Clojure
 		racket_langserver = {},  -- Racket (Scheme dialect)
