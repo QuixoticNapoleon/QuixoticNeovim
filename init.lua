@@ -63,17 +63,26 @@ vim.api.nvim_set_hl(0, 'LineNr', { fg = '#74c4c4', bg = 'NONE' })
 vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = '#74c4c4', bg = 'NONE' })
 
 
--- Tab Spaces
+-- Tab/Space defaults (spaces for most languages)
 vim.cmd("set tabstop=4")
 vim.cmd("set shiftwidth=4")
--- vim.cmd("set expandtab")
-vim.cmd("set noexpandtab")
+vim.cmd("set expandtab")
 vim.cmd("set smarttab")
 
 -- Indentation Options
 vim.opt.indentkeys:remove(":")
 vim.opt.cinkeys:remove(":")
 vim.opt.smartindent = true
+
+-- Tabs for C/C++/Zig/Go/Lua/Shell
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "c", "cpp", "zig", "go", "lua", "sh", "zsh", "bash" },
+	callback = function()
+		vim.bo.expandtab = false
+		vim.bo.tabstop = 4
+		vim.bo.shiftwidth = 4
+	end,
+})
 
 
 
