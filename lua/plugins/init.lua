@@ -9,11 +9,11 @@ return {
 	},
 
 	-- TreeSitter
-	{"nvim-treesitter/nvim-treesitter", branch = 'master', lazy = false, build = ":TSUpdate",
+	{"nvim-treesitter/nvim-treesitter", branch = 'main', lazy = false, build = ":TSUpdate",
 	config = function()
-		require("config.treesitter")() 
+		require("config.treesitter")()
 	end,},
-	{"nvim-treesitter/nvim-treesitter-textobjects", lazy = false, },
+	{"nvim-treesitter/nvim-treesitter-textobjects", branch = "main", lazy = false, },
 
 	-- Autopairs
 	{
