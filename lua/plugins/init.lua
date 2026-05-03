@@ -77,7 +77,7 @@ return {
 	{ "karb94/neoscroll.nvim", opts = {} },
 
 	-- Telescope
-	{ "nvim-telescope/telescope.nvim", tag = "0.1.8", dependencies = { "nvim-lua/plenary.nvim" }, config = require("config.telescope") },
+	{ "nvim-telescope/telescope.nvim", tag = "0.1.8", config = require("config.telescope") },
 
 	-- Plenary
 	{ "nvim-lua/plenary.nvim" },
@@ -88,13 +88,12 @@ return {
 	-- Grammar & Spell Checking
 	{ "rhysd/vim-grammarous", ft = "tex" },
 
+	-- Git Signs
+	{ "lewis6991/gitsigns.nvim" },
+
 	-- Tab Bar
 	{
 	"romgrk/barbar.nvim",
-	dependencies = {
-		"lewis6991/gitsigns.nvim",      -- optional: for git status
-		"nvim-tree/nvim-web-devicons",  -- optional: for file icons
-	},
 	version = "^1.0.0",
 	config = require("config.tabs"),
 	},
@@ -109,7 +108,7 @@ return {
 	},
 
 	-- Dashboard
-	{ "nvimdev/dashboard-nvim", event = "VimEnter", dependencies = { "nvim-tree/nvim-web-devicons" }, config = require("config.dashboard") },
+	{ "nvimdev/dashboard-nvim", event = "VimEnter", config = require("config.dashboard") },
 
 	-- Hex Editing
 	-- { 'ArcaneSpecs/HexEditor.nvim', 
@@ -168,7 +167,7 @@ return {
 	-- Markdown Rendering
 	{
 		'MeanderingProgrammer/render-markdown.nvim',
-		dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+		dependencies = { 'nvim-treesitter/nvim-treesitter' },
 		ft = { 'markdown' },
 		opts = {
 			enabled = false,
