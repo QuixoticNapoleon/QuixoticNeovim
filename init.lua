@@ -195,38 +195,40 @@ vim.cmd([[
 
 -- For Tabs and Folds
 vim.cmd [[
-	highlight BufferCurrent guifg=#FFFFFF guibg=#003636
-	highlight BufferVisible guifg=#CCCCCC guibg=#003636
-	highlight BufferInactive guifg=#888888 guibg=#003636
+	highlight TabLineFill guibg=NONE
+
+	highlight BufferCurrent guifg=#FFFFFF guibg=NONE
+	highlight BufferVisible guifg=#CCCCCC guibg=NONE
+	highlight BufferInactive guifg=#888888 guibg=NONE
 	
-	highlight BufferCurrentMod guifg=#fce094 guibg=#003636
-	highlight BufferVisibleMod guibg=#003636
-	highlight BufferInactiveMod guibg=#003636
+	highlight BufferCurrentMod guifg=#fce094 guibg=NONE
+	highlight BufferVisibleMod guibg=NONE
+	highlight BufferInactiveMod guifg=#a89768 guibg=NONE
 	
-	highlight BufferDefaultCurrent guifg=#FFFFFF guibg=#003636
-	highlight BufferDefaultVisible guifg=#CCCCCC guibg=#003636
-	highlight BufferDefaultInactive guifg=#888888 guibg=#003636
+	highlight BufferDefaultCurrent guifg=#FFFFFF guibg=NONE
+	highlight BufferDefaultVisible guifg=#CCCCCC guibg=NONE
+	highlight BufferDefaultInactive guifg=#888888 guibg=NONE
 	
-	highlight BufferInactiveSign guifg=#8affff  guibg=#003636
-	highlight BufferVisibleSign  guifg=#8affff  guibg=#003636
-	highlight BufferCurrentSign  guifg=#8affff  guibg=#003636
+	highlight BufferInactiveSign guifg=#8affff  guibg=NONE
+	highlight BufferVisibleSign  guifg=#8affff  guibg=NONE
+	highlight BufferCurrentSign  guifg=#8affff  guibg=NONE
 	
-	highlight BufferDefaultInactiveSign guifg=#8affff  guibg=#003636
-	highlight BufferDefaultVisibleSign  guifg=#8affff  guibg=#003636
-	highlight BufferDefaultCurrentSign  guifg=#8affff  guibg=#003636
+	highlight BufferDefaultInactiveSign guifg=#8affff  guibg=NONE
+	highlight BufferDefaultVisibleSign  guifg=#8affff  guibg=NONE
+	highlight BufferDefaultCurrentSign  guifg=#8affff  guibg=NONE
 	
-	highlight BufferDefaultInactiveIcon guifg=#8affff  guibg=#003636
-	highlight BufferDefaultVisibleIcon  guifg=#8affff  guibg=#003636
-	highlight BufferDefaultCurrentIcon  guifg=#8affff  guibg=#003636
+	highlight BufferDefaultInactiveIcon guifg=#8affff  guibg=NONE
+	highlight BufferDefaultVisibleIcon  guifg=#8affff  guibg=NONE
+	highlight BufferDefaultCurrentIcon  guifg=#8affff  guibg=NONE
 	
-	highlight BufferInactiveIcon guifg=#8affff  guibg=#003636
-	highlight BufferVisibleIcon  guifg=#8affff  guibg=#003636
-	highlight BufferCurrentIcon  guifg=#8affff  guibg=#003636
+	highlight BufferInactiveIcon guifg=#8affff  guibg=NONE
+	highlight BufferVisibleIcon  guifg=#8affff  guibg=NONE
+	highlight BufferCurrentIcon  guifg=#8affff  guibg=NONE
 	
-	highlight BufferTabpageFill guibg=#003636
+	highlight BufferTabpageFill guibg=NONE
 	
-	highlight Folded guifg=#74c4c4  guibg=#003636
-	highlight FoldColumn guifg=#74c4c4  guibg=#003636
+	highlight Folded guifg=#74c4c4  guibg=NONE
+	highlight FoldColumn guifg=#74c4c4  guibg=NONE
 ]]
 
 -- Syntax Highlighting
