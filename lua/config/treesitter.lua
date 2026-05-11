@@ -27,6 +27,7 @@ return function()
 		"scheme",
 		"clojure",
 		"fennel",
+		"java",
 	})
 
 	-- Enable treesitter highlighting for all filetypes with a parser
