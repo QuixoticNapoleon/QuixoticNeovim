@@ -29,6 +29,7 @@ return function()
 		"fennel",
 		"java",
 		"fortran",
+		"typst",
 	})
 
 	-- Enable treesitter highlighting for all filetypes with a parser
