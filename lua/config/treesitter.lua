@@ -9,7 +9,15 @@ return function()
 		install_dir = vim.fn.stdpath("data") .. "/site",
 	})
 
-	-- Install parsers (no-op if already installed)
+	-- Make bundled queries available for parsers shipped with the plugin
+	-- (install() symlinks queries to site/ but only after successful compilation;
+	-- this ensures bundled parsers work even without running install)
+	local ts_runtime = vim.fn.stdpath("data") .. "/lazy/nvim-treesitter/runtime"
+	if vim.fn.isdirectory(ts_runtime) == 1 then
+		vim.opt.runtimepath:append(ts_runtime)
+	end
+
+	-- Pre-install common parsers (no-op if already installed)
 	require("nvim-treesitter").install({
 		"c",
 		"lua",
@@ -32,29 +40,57 @@ return function()
 		"typst",
 	})
 
-	-- Enable treesitter highlighting for all filetypes with a parser
-	-- (Neovim 0.12 already enables this for Markdown by default,
-	--  but this covers all other languages too.)
-	vim.api.nvim_create_autocmd("FileType", {
-		callback = function()
-			-- Skip latex as before
-			if vim.bo.filetype == "latex" or vim.bo.filetype == "tex" then
-				return
-			end
-			pcall(vim.treesitter.start)
-		end,
-	})
+	-- Track languages we've already attempted to auto-install
+	local attempted = {}
 
-	-- Treesitter-based folding (Neovim 0.12 native)
+	local function setup_folding(buf)
+		if pcall(vim.treesitter.get_parser, buf) then
+			vim.wo[0][0].foldmethod = "expr"
+			vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+		else
+			vim.wo[0][0].foldmethod = "indent"
+		end
+	end
+
+	-- Auto-install parsers and enable highlighting/folding on FileType
 	vim.opt.foldlevelstart = 99
 	vim.api.nvim_create_autocmd("FileType", {
-		callback = function()
-			if pcall(vim.treesitter.get_parser) then
-				vim.wo[0][0].foldmethod = "expr"
-				vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
-			else
-				vim.wo[0][0].foldmethod = "indent"
+		callback = function(args)
+			local buf = args.buf
+			local ft = vim.bo[buf].filetype
+			if ft == "latex" or ft == "tex" then return end
+
+			local lang = vim.treesitter.language.get_lang(ft) or ft
+			local has_queries = #vim.api.nvim_get_runtime_file("queries/" .. lang .. "/highlights.scm", true) > 0
+
+			-- Parser and queries both available: just enable highlighting + folding
+			if has_queries and pcall(vim.treesitter.start, buf) then
+				setup_folding(buf)
+				return
 			end
+
+			-- Don't re-attempt a failed install
+			if attempted[lang] then
+				-- Still set up folding for parsers that loaded without queries
+				setup_folding(buf)
+				return
+			end
+			attempted[lang] = true
+
+			-- Auto-install the missing parser/queries
+			local ok, handle = pcall(require("nvim-treesitter").install, { lang }, { force = true })
+			if not ok then return end
+
+			-- When install finishes, enable highlighting on the buffer
+			handle:await(function(err)
+				if err then return end
+				vim.schedule(function()
+					if vim.api.nvim_buf_is_valid(buf) then
+						pcall(vim.treesitter.start, buf)
+						setup_folding(buf)
+					end
+				end)
+			end)
 		end,
 	})
 
